@@ -22,6 +22,11 @@ function addTask() {
         taskList.appendChild(newTask);
         const deleteButton = newTask.querySelector('button');
         deleteButton.addEventListener('click', deleteTask);
+
+        const checkBox = newTask.querySelector('input');
+        checkBox.addEventListener('change', checkList);
+
+        inputTask.value = '';
     }
 }
 
@@ -31,7 +36,15 @@ function deleteTask(event) {
     parentTask.remove();
 }
 
+function checkList() {
+    const parentTask = this.closest('.list-container__task');
+    parentTask.classList.toggle('checked');
+}
+
 function addDeleteListeners() {
     const deleteButtons = document.querySelectorAll('.list-container__task-delete');
     deleteButtons.forEach(deleteButton => deleteButton.addEventListener('click', deleteTask));
+
+    const checkBoxes = document.querySelectorAll('.list-container__check-task');
+    checkBoxes.forEach(checkBox => checkBox.addEventListener('change', checkList));
 }
