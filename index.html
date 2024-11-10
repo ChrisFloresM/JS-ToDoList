@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--suppress HtmlFormInputWithoutLabel -->
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+
+		<!-- Styles -->
+		<link rel="stylesheet" href="styles/styles.css" type="text/css">
+		<title>To-Do List</title>
+	</head>
+	<body>
+		<div class="input-fields">
+			<div class="input-fields__text">
+				<label for="input-task" class="input-fields__label-text">Input a task to complete</label>
+				<input id="input-task" class="input-fields__input-text" type="text">
+			</div>
+			<div class="input-fields__button">
+				<button id="add-task-button" class="input-fields__button-add" type="button">Add</button>
+			</div>
+		</div>
+		<div class="list-container">
+			<ul id="task-list" class="list-container__task-list">
+				<li class="list-container__task">
+					<input class="list-container__check-task" type="checkbox">
+					<span class="list-container__task-text task">Wash the dishes</span>
+					<button class="list-container__task-delete delete-btn">Remove task</button>
+				</li>
+				<li class="list-container__task">
+					<input class="list-container__check-task" type="checkbox">
+					<span class="list-container__task-text task">Clean the room</span>
+					<button class="list-container__task-delete delete-btn">Remove task</button>
+				</li>
+				<li class="list-container__task">
+					<input class="list-container__check-task" type="checkbox">
+					<span class="list-container__task-text task">Email Lopez</span>
+					<button class="list-container__task-delete delete-btn">Remove task</button>
+				</li>
+			</ul>
+		</div>
+
+	</body>
+</html>

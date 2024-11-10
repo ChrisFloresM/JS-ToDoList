@@ -1,0 +1,15 @@
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Font setup */
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: sans-serif;
+}
