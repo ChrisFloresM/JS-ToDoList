@@ -2,49 +2,96 @@
 const inputTask = document.querySelector('#input-task');
 const addButton = document.querySelector('#add-task-button');
 const taskList = document.querySelector('#task-list');
+let tasksObjs = [];
 
-addButton.addEventListener('click', addTask);
+addButton.addEventListener('click', addTaskListener);
+retrieveFromStorage();
 
-addDeleteListeners();
+/* Prorotype for tasks objects */
+function TaskObject() {
+    this.description = inputTask.value;
+    this.completed = false;
+    this.id = Date.now();
+}
 
-function addTask() {
+/* Event listeners */
+function addTaskListener() {
     if (inputTask.value) {
-        const newTask = document.createElement('li');
-        newTask.classList.add('list-container__task');
-        newTask.innerHTML =
-            `<div class="task-container">
-              <input class="list-container__check-task" type="checkbox">
-              <span class="list-container__task-text task">${inputTask.value}</span>
-            </div>
-            <button class="list-container__task-delete delete-btn">
-              <ion-icon name="trash-outline"></ion-icon>
-            </button>`
-        taskList.appendChild(newTask);
-        const deleteButton = newTask.querySelector('button');
-        deleteButton.addEventListener('click', deleteTask);
+        const newTaskObj = new TaskObject(inputTask.value);
+        tasksObjs.push(newTaskObj);
 
-        const checkBox = newTask.querySelector('input');
-        checkBox.addEventListener('change', checkList);
+        saveToLocalStorage();
+
+        createTask(newTaskObj);
 
         inputTask.value = '';
     }
 }
 
-function deleteTask(event) {
+function checkTaskListener() {
+    checkTask(this);
+}
+
+function deleteTaskListener(event) {
     const button = event.target;
     const parentTask = button.closest('.list-container__task');
+
     parentTask.remove();
 }
 
-function checkList() {
-    const parentTask = this.closest('.list-container__task');
-    parentTask.classList.toggle('checked');
+/* Auxiliar functions */
+function createTask(taskObj) {
+    const newTask = document.createElement('li');
+    newTask.classList.add('list-container__task');
+    newTask.dataset.taskId = taskObj.id;
+    newTask.innerHTML =
+        `<div class="task-container">
+          <input class="list-container__check-task" type="checkbox">
+          <span class="list-container__task-text task">${taskObj.description}</span>
+        </div>
+        <button class="list-container__task-delete delete-btn">
+          <ion-icon name="trash-outline"></ion-icon>
+        </button>`
+
+    addListeners(newTask);
+    checkTask(newTask.querySelector('.list-container__check-task'));
+    taskList.appendChild(newTask);
 }
 
-function addDeleteListeners() {
-    const deleteButtons = document.querySelectorAll('.list-container__task-delete');
-    deleteButtons.forEach(deleteButton => deleteButton.addEventListener('click', deleteTask));
+function checkTask(taskCheckbox) {
+    const parentTask = taskCheckbox.closest('.list-container__task');
 
-    const checkBoxes = document.querySelectorAll('.list-container__check-task');
-    checkBoxes.forEach(checkBox => checkBox.addEventListener('change', checkList));
+    if (taskCheckbox.checked) {
+        parentTask.classList.add('checked');
+    } else {
+        parentTask.classList.remove('checked');
+    }
+}
+
+function addListeners(task) {
+    const deleteButton = task.querySelector('button');
+    deleteButton.addEventListener('click', deleteTaskListener);
+
+    const checkBox = task.querySelector('input');
+    checkBox.addEventListener('click', checkTaskListener);
+}
+
+function saveToLocalStorage() {
+    localStorage.setItem("objects", JSON.stringify(tasksObjs));
+}
+
+function retrieveFromStorage() {
+    try {
+        const storedData = localStorage.getItem("objects");
+        tasksObjs = storedData ? JSON.parse(storedData) : [];
+    } catch (error) {
+        console.error("Error al parsear datos de localStorage:", error);
+        tasksObjs = [];
+    }
+
+    if (tasksObjs.length > 0) {
+        tasksObjs.forEach(object => {
+            createTask(object);
+        });
+    }
 }
