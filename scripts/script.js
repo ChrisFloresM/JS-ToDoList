@@ -29,12 +29,23 @@ function addTaskListener() {
 }
 
 function checkTaskListener() {
+    const parent = this.closest('.list-container__task');
+    const taskId = parent.dataset.taskId;
+
+    let taskToModify = tasksObjs.find(task => task.id === Number(taskId));
+    taskToModify.completed = this.checked;
+    saveToLocalStorage();
+
     checkTask(this);
 }
 
 function deleteTaskListener(event) {
     const button = event.target;
     const parentTask = button.closest('.list-container__task');
+
+    const taskId = parentTask.dataset.taskId;
+    tasksObjs = tasksObjs.filter(task => task.id !== Number(taskId));
+    saveToLocalStorage();
 
     parentTask.remove();
 }
@@ -53,8 +64,12 @@ function createTask(taskObj) {
           <ion-icon name="trash-outline"></ion-icon>
         </button>`
 
+
+    const taskCheckbox = newTask.querySelector('.list-container__check-task');
+    taskCheckbox.checked = taskObj.completed;
+
     addListeners(newTask);
-    checkTask(newTask.querySelector('.list-container__check-task'));
+    checkTask(taskCheckbox);
     taskList.appendChild(newTask);
 }
 
