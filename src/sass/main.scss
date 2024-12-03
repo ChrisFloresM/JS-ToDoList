@@ -1,0 +1,21 @@
+/* abstracts */
+@use "abstracts/variables.scss";
+
+/* layout */
+@use "layout/bg-section.scss";
+
+body {
+  position: relative;
+}
+.container {
+  width: 600px;
+  height: 500px;
+  background-color: black;
+  margin: 0 50px;
+
+  position: absolute;
+  top: 50px;
+  left: 50%;
+
+  transform: translateX(-50%);
+}
