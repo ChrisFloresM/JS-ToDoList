@@ -1,0 +1,50 @@
+@use "../abstracts/variables.scss" as *;
+@use "../abstracts/mixins.scss" as *;
+
+/* Container styles used for input and tasks */
+.task-container {
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--white-color);
+
+  @include flex-container(center, center, 0);
+}
+
+/* Text styles */
+.task-text {
+  flex: 1;
+  color: var(--very-dark-grayish-blue);
+  font-size: 2rem;
+  font-family: inherit;
+  border: none;
+  background: transparent;
+}
+
+/* Radio button styles */
+.main__task-label-radio {
+  display: flex;
+  align-items: center;
+  margin-right: 1.2rem;        /* Espaciado entre el radio y el input de texto */
+  cursor: pointer;
+}
+
+/* Radio */
+.task-check {
+  display: none;
+}
+
+/*Span for styles */
+.task-check-style {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  border: 2px solid var(--dark-grayish-blue);
+  display: inline-block;
+  margin-right: 2rem;
+}
+
+/* Input text placeholder */
+.main__input-task::placeholder {
+  color: var(--dark-grayish-blue);               /* Color del texto placeholder */
+}
+

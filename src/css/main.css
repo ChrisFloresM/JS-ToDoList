@@ -3,6 +3,7 @@
   /* Color variables */
   --primary-blue: hsl(220, 98%, 61%);
   /* light theme */
+  --white-color: hsl(0, 0%, 1000%);
   --very-light-gray: hsl(0, 0%, 98%);
   --very-light-grayish-blue: hsl(236, 33%, 92%);
   --light-grayish-blue: hsl(233, 11%, 84%);
@@ -23,10 +24,95 @@
   --font-weight-bold: 700;
 }
 
+/*
+1. Typography:
+    => Font sizes (px): 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+5. Whitespace:
+    => Spacing (px): 2 / 4 / 8 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+*/
+/* General styles */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: var(--font-family), serif;
+  position: relative;
+  background-color: var(--very-light-gray);
+}
+
+/* components */
+/* abstracts */
+/* Container styles used for input and tasks */
+.task-container {
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--white-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
+
+/* Text styles */
+.task-text {
+  flex: 1;
+  color: var(--very-dark-grayish-blue);
+  font-size: 2rem;
+  font-family: inherit;
+  border: none;
+  background: transparent;
+}
+
+/* Radio button styles */
+.main__task-label-radio {
+  display: flex;
+  align-items: center;
+  margin-right: 1.2rem; /* Espaciado entre el radio y el input de texto */
+  cursor: pointer;
+}
+
+/* Radio */
+.task-check {
+  display: none;
+}
+
+/*Span for styles */
+.task-check-style {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  border: 2px solid var(--dark-grayish-blue);
+  display: inline-block;
+  margin-right: 2rem;
+}
+
+/* Input text placeholder */
+.main__input-task::placeholder {
+  color: var(--dark-grayish-blue); /* Color del texto placeholder */
+}
+
+/* abstracts */
+.option-button {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 1.2rem;
+  color: inherit;
+  padding: 0;
+}
+.option-button:hover {
+  cursor: pointer;
+  color: var(--primary-blue);
+}
+
 /* layout */
 /* abstracts */
 .bg-section-decorative {
-  height: 30vh;
+  height: 35vh;
   width: 100vw;
   background-image: url("../assets/bg-desktop-light.jpg"), linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   background-size: cover;
@@ -34,19 +120,145 @@
   background-repeat: no-repeat;
 }
 
-body {
-  position: relative;
-}
-
-.container {
-  width: 600px;
-  height: 500px;
-  background-color: black;
-  margin: 0 50px;
+.main-container {
+  width: 35%;
+  height: 100vh;
   position: absolute;
-  top: 50px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
+}
+
+/* abstracts */
+.header {
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+}
+
+.header__heading {
+  font-size: 5.2rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 2rem;
+  color: var(--very-light-gray);
+}
+
+.header__button {
+  background-color: transparent;
+  border: none;
+  transform: scale(1.5);
+}
+.header__button:hover {
+  cursor: pointer;
+}
+
+/* abstracts */
+.main {
+  margin-top: 4.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.main__list-container {
+  width: 100%;
+  background-color: var(--very-light-gray);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2px;
+}
+
+.main__task-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2px;
+}
+
+.main__options {
+  background-color: var(--white-color);
+  padding: 1.2rem;
+  color: var(--dark-grayish-blue);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+}
+
+.main__option-items-left {
+  font-size: 1.2rem;
+}
+
+.main__filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.main__filter-button {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Common styles */
+.light-shadow {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.main__input, .main__list-container {
+  border-radius: 8px;
+}
+
+/*@mixin flex-container($justify: center, $align: center, $gap: 2rem, $direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}*/
+/* abstracts */
+.footer {
+  margin-top: 6.4rem;
+}
+
+.footer__text {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--dark-grayish-blue);
+}
+
+/* Media queries */
+@media (max-width: 1200px) {
+  /* Main - container */
+  .main-container {
+    width: 70%;
+  }
+}
+@media (max-width: 610px) {
+  /* Main - container */
+  html {
+    font-size: 50%;
+  }
+  .main-container {
+    width: 90%;
+  }
+  .bg-section-decorative {
+    height: 25vh;
+  }
+  .main__filters {
+    gap: 1rem;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

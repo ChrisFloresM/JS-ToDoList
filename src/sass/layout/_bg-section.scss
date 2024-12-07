@@ -2,8 +2,9 @@
 @use "../abstracts/mixins.scss" as *;
 
 .bg-section-decorative {
-  height: 30vh;
+  height: 35vh;
   width: 100vw;
 
   @include gradient-background('../assets/bg-desktop-light.jpg', cover);
 }
+

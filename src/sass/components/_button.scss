@@ -1,0 +1,16 @@
+@use "../abstracts/variables.scss" as *;
+@use "../abstracts/mixins.scss" as *;
+
+.option-button {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 1.2rem;
+  color: inherit;
+  padding: 0;
+
+  &:hover {
+    cursor: pointer;
+    color: var(--primary-blue);
+  }
+}

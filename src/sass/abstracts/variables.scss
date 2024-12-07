@@ -3,6 +3,7 @@
   --primary-blue: hsl(220, 98%, 61%);
 
   /* light theme */
+  --white-color: hsl(0, 0%, 1000%);
   --very-light-gray: hsl(0, 0%, 98%);
   --very-light-grayish-blue: hsl(236, 33%, 92%);
   --light-grayish-blue: hsl(233, 11%, 84%);
@@ -24,3 +25,13 @@
   --font-weight-regular: 400;
   --font-weight-bold: 700;
 }
+
+
+/*
+1. Typography:
+    => Font sizes (px): 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+5. Whitespace:
+    => Spacing (px): 2 / 4 / 8 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+*/

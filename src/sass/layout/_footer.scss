@@ -1,0 +1,11 @@
+@use "../abstracts/variables.scss" as *;
+
+.footer {
+  margin-top: 6.4rem;
+}
+
+.footer__text {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--dark-grayish-blue);
+}

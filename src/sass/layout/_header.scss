@@ -1,0 +1,24 @@
+@use "../abstracts/variables.scss" as *;
+@use "../abstracts/mixins.scss" as *;
+
+.header {
+  margin-top: 8rem;
+  @include flex-container(space-between, center, 0);
+}
+
+.header__heading {
+  font-size: 5.2rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 2rem;
+  color: var(--very-light-gray);
+}
+
+.header__button {
+  background-color: transparent;
+  border: none;
+  transform: scale(1.5);
+
+  &:hover {
+    cursor: pointer;
+  }
+}

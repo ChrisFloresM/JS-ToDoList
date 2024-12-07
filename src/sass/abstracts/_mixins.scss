@@ -4,3 +4,11 @@
   background-position: $position;
   background-repeat: no-repeat;
 }
+
+@mixin flex-container($justify: center, $align: center, $gap: 2rem, $direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}

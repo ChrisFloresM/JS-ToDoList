@@ -21,7 +21,60 @@
 	</head>
 	<body>
 		<div class="bg-section-decorative bg-section-decorative--light"></div>
-		<section class="container"></section>
+		<section class="main-container">
+			<header class="header">
+				<h2 class="header__heading">TODO</h2>
+				<button class="header__button">
+					<img
+						class="header__button-icon"
+						src="assets/icon-moon.svg"
+						alt="The icon of the moon to turn to dark theme">
+				</button>
+			</header>
+
+			<main class="main">
+				<div class="main__input task-container light-shadow">
+					<label class="main__task-label-radio">
+						<input class="task-check" type="radio" name="check">
+						<span class="task-check-style"></span>
+					</label>
+					<input class="main__input-task task-text" type="text" placeholder="Create a new todo...">
+				</div>
+				<div class="main__list-container light-shadow">
+					<ul class="main__task-list">
+						<li class="main__task task-container">
+							<label class="main__task-label-radio">
+								<input class="task-check" type="radio" name="check">
+								<span class="task-check-style"></span>
+							</label>
+							<p class="main__task-description task-text">Do homework</p>
+						</li>
+						<li class="main__task task-container">
+							<label class="main__task-label-radio">
+								<input class="task-check" type="radio" name="check">
+								<span class="task-check-style"></span>
+							</label>
+							<p class="main__task-description task-text">Wash the dishes</p>
+						</li>
+					</ul>
+					<div class="main__options">
+						<p class="main__option-items-left"><span class="left-amount">5</span> items left</p>
+						<div class="main__filters">
+							<button class="main__filter-button option-button">All</button>
+							<button class="main__filter-button option-button">Active</button>
+							<button class="main__filter-button option-button">Completed</button>
+						</div>
+						<button class="main__option-description option-button">Clear Completed</button>
+					</div>
+				</div>
+			</main>
+
+			<footer class="footer">
+				<p class="footer__text">Drag and drop to reorder list</p>
+			</footer>
+		</section>
+
+
 		<!-- Scripts -->
 <!--		<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 		<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

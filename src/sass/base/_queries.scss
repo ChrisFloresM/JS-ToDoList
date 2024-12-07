@@ -1,0 +1,26 @@
+@media (max-width: 1200px) {
+  /* Main - container */
+  .main-container {
+    width: 70%;
+  }
+}
+
+@media (max-width: 610px) {
+  /* Main - container */
+  html {
+    font-size: 50%;
+  }
+
+  .main-container {
+    width: 90%;
+  }
+
+  .bg-section-decorative {
+    height: 25vh;
+  }
+
+  .main__filters {
+    gap: 1rem;
+  }
+
+}
