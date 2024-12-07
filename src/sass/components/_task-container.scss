@@ -21,10 +21,10 @@
 }
 
 /* Radio button styles */
-.main__task-label-radio {
+.main__task-label-checkbox {
   display: flex;
   align-items: center;
-  margin-right: 1.2rem;        /* Espaciado entre el radio y el input de texto */
+  margin-right: 1.2rem;
   cursor: pointer;
 }
 
@@ -43,8 +43,17 @@
   margin-right: 2rem;
 }
 
+.task-check:checked + .task-check-style {
+  @include gradient-background('../assets/icon-check.svg', contain);
+}
+
+.main__task:has(.task-check:checked) .main__task-description {
+  text-decoration: line-through;
+  color: var(--dark-grayish-blue);
+}
+
 /* Input text placeholder */
 .main__input-task::placeholder {
-  color: var(--dark-grayish-blue);               /* Color del texto placeholder */
+  color: var(--dark-grayish-blue);
 }
 

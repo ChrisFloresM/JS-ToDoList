@@ -68,10 +68,10 @@ body {
 }
 
 /* Radio button styles */
-.main__task-label-radio {
+.main__task-label-checkbox {
   display: flex;
   align-items: center;
-  margin-right: 1.2rem; /* Espaciado entre el radio y el input de texto */
+  margin-right: 1.2rem;
   cursor: pointer;
 }
 
@@ -90,9 +90,21 @@ body {
   margin-right: 2rem;
 }
 
+.task-check:checked + .task-check-style {
+  background-image: url("../assets/icon-check.svg"), linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.main__task:has(.task-check:checked) .main__task-description {
+  text-decoration: line-through;
+  color: var(--dark-grayish-blue);
+}
+
 /* Input text placeholder */
 .main__input-task::placeholder {
-  color: var(--dark-grayish-blue); /* Color del texto placeholder */
+  color: var(--dark-grayish-blue);
 }
 
 /* abstracts */
@@ -220,13 +232,6 @@ body {
   border-radius: 8px;
 }
 
-/*@mixin flex-container($justify: center, $align: center, $gap: 2rem, $direction: row) {
-  display: flex;
-  flex-direction: $direction;
-  justify-content: $justify;
-  align-items: $align;
-  gap: $gap;
-}*/
 /* abstracts */
 .footer {
   margin-top: 6.4rem;
