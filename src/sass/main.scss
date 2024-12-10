@@ -15,5 +15,8 @@
 @use "layout/main-section.scss";
 @use "layout/footer.scss";
 
+@use "themes/light-mode.scss";
+@use "themes/dark-mode.scss";
+
 /* Media queries */
 @use "base/queries.scss";

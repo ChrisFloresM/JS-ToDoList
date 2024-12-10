@@ -1,0 +1,28 @@
+@use "../abstracts/variables.scss" as *;
+@use "../abstracts/mixins.scss" as *;
+
+
+body.light {
+  background-color: var(--very-light-gray);
+}
+
+.task-check-style.light::before {
+  background: var(--white-color);
+}
+
+.bg-section-decorative.light {
+  @include gradient-background('../assets/bg-desktop-light.jpg', cover);
+}
+
+.main__list-container.light {
+  background-color: var(--dark-grayish-blue);
+}
+
+.task-container.light {
+  background-color: var(--white-color);
+  color: var(--very-dark-grayish-blue);
+}
+
+.main__options.light {
+  background-color: var(--white-color);
+}

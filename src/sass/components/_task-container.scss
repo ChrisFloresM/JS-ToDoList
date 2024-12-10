@@ -5,15 +5,14 @@
 .task-container {
   width: 100%;
   padding: 2rem;
-  background-color: var(--white-color);
 
   @include flex-container(center, center, 0);
 }
 
 /* Text styles */
 .task-text {
+  color: inherit;
   flex: 1;
-  color: var(--very-dark-grayish-blue);
   font-size: 2rem;
   font-family: inherit;
   border: none;
@@ -37,7 +36,7 @@
 .task-check-style {
   height: 2.2rem;
   width: 2.2rem;
-  border-radius: 50%;/**/
+  border-radius: 50%;
   background-color: var(--dark-grayish-blue);
   display: inline-block;
   margin-right: 2rem;
@@ -56,7 +55,6 @@
   left: 2px;
   right: 2px;
   bottom: 2px;
-  background: var(--white-color);
   border-radius: 50%
 }
 
@@ -80,7 +78,6 @@
 /* Close icon */
 .close-icon {
   font-size: 2rem;
-  color: var(--very-dark-grayish-blue);
   opacity: 0;
   transition: opacity 0.3s;
   transform: scale(1.5);

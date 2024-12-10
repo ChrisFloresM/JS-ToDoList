@@ -16,7 +16,7 @@
   --dark-theme-light-grayish-blue-hover: hsl(236, 33%, 92%);
   --dark-theme-dark-grayish-blue: hsl(234, 11%, 52%);
   --dark-theme-very-dark-grayish-blue: hsl(233, 14%, 35%);
-  --dark-theme-very-dark-grayish-blue-alt: hsl(237, 14%, 26%);
+  --dark-theme-very-dark-grayish-blue-alt: hsla(237, 14%, 26%, 0.6);
   /* Typography */
   --body-font-size: 1.8rem;
   --font-family: "Josefin Sans", sans-serif;
@@ -40,7 +40,6 @@ html {
 body {
   font-family: var(--font-family), serif;
   position: relative;
-  background-color: var(--very-light-gray);
 }
 
 /* components */
@@ -49,7 +48,6 @@ body {
 .task-container {
   width: 100%;
   padding: 2rem;
-  background-color: var(--white-color);
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -59,8 +57,8 @@ body {
 
 /* Text styles */
 .task-text {
+  color: inherit;
   flex: 1;
-  color: var(--very-dark-grayish-blue);
   font-size: 2rem;
   font-family: inherit;
   border: none;
@@ -84,7 +82,7 @@ body {
 .task-check-style {
   height: 2.2rem;
   width: 2.2rem;
-  border-radius: 50%; /**/
+  border-radius: 50%;
   background-color: var(--dark-grayish-blue);
   display: inline-block;
   margin-right: 2rem;
@@ -102,7 +100,6 @@ body {
   left: 2px;
   right: 2px;
   bottom: 2px;
-  background: var(--white-color);
   border-radius: 50%;
 }
 
@@ -129,7 +126,6 @@ body {
 /* Close icon */
 .close-icon {
   font-size: 2rem;
-  color: var(--very-dark-grayish-blue);
   opacity: 0;
   transition: opacity 0.3s;
   transform: scale(1.5);
@@ -162,14 +158,9 @@ body {
 }
 
 /* layout */
-/* abstracts */
 .bg-section-decorative {
   height: 35vh;
   width: 100vw;
-  background-image: url("../assets/bg-desktop-light.jpg"), linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .main-container {
@@ -219,13 +210,13 @@ body {
 
 .main__list-container {
   width: 100%;
-  background-color: var(--very-light-gray);
+  background-color: var(--dark-grayish-blue);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  gap: 2px;
+  gap: 1px;
 }
 
 .main__task-list {
@@ -233,11 +224,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  gap: 2px;
+  gap: 1px;
 }
 
 .main__options {
-  background-color: var(--white-color);
   padding: 1.2rem;
   color: var(--dark-grayish-blue);
   display: flex;
@@ -283,6 +273,64 @@ body {
   color: var(--dark-grayish-blue);
 }
 
+/* abstracts */
+body.light {
+  background-color: var(--very-light-gray);
+}
+
+.task-check-style.light::before {
+  background: var(--white-color);
+}
+
+.bg-section-decorative.light {
+  background-image: url("../assets/bg-desktop-light.jpg"), linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.main__list-container.light {
+  background-color: var(--dark-grayish-blue);
+}
+
+.task-container.light {
+  background-color: var(--white-color);
+  color: var(--very-dark-grayish-blue);
+}
+
+.main__options.light {
+  background-color: var(--white-color);
+}
+
+/* abstracts */
+body.dark {
+  background-color: var(--very-dark-blue);
+}
+
+.task-check-style.dark::before {
+  background: var(--very-dark-desaturated-blue);
+}
+
+.bg-section-decorative.dark {
+  background-image: url("../assets/bg-desktop-dark.jpg"), linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.main__list-container.dark {
+  background-color: var(--dark-theme-very-dark-grayish-blue);
+}
+
+.task-container.dark {
+  background-color: var(--very-dark-desaturated-blue);
+  color: var(--dark-theme-light-grayish-blue);
+}
+
+.main__options.dark {
+  background-color: var(--very-dark-desaturated-blue);
+}
+
 /* Media queries */
 @media (max-width: 1200px) {
   /* Main - container */
@@ -303,6 +351,9 @@ body {
   }
   .main__filters {
     gap: 1rem;
+  }
+  .main__task-list {
+    gap: 2px;
   }
 }
 

@@ -1,0 +1,28 @@
+@use "../abstracts/variables.scss" as *;
+@use "../abstracts/mixins.scss" as *;
+
+
+body.dark {
+  background-color: var(--very-dark-blue);
+}
+
+.task-check-style.dark::before {
+  background: var(--very-dark-desaturated-blue);
+}
+
+.bg-section-decorative.dark {
+  @include gradient-background('../assets/bg-desktop-dark.jpg', cover);
+}
+
+.main__list-container.dark {
+  background-color: var(--dark-theme-very-dark-grayish-blue);
+}
+
+.task-container.dark {
+  background-color: var(--very-dark-desaturated-blue);
+  color: var(--dark-theme-light-grayish-blue);
+}
+
+.main__options.dark {
+  background-color: var(--very-dark-desaturated-blue);
+}

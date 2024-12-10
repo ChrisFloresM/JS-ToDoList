@@ -15,7 +15,7 @@
   --dark-theme-light-grayish-blue-hover: hsl(236, 33%, 92%);
   --dark-theme-dark-grayish-blue: hsl(234, 11%, 52%);
   --dark-theme-very-dark-grayish-blue: hsl(233, 14%, 35%);
-  --dark-theme-very-dark-grayish-blue-alt: hsl(237, 14%, 26%);
+  --dark-theme-very-dark-grayish-blue-alt: hsla(237, 14%, 26%, 0.38);
   /* Typography */
   --body-font-size: 1.8rem;
   --font-family: "Josefin Sans", sans-serif;

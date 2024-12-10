@@ -9,18 +9,17 @@
 
 .main__list-container {
   width: 100%;
-  background-color: var(--very-light-gray);
+  background-color: var(--dark-grayish-blue);
   overflow: hidden;
 
-  @include flex-container(center, stretch, 2px, column);
+  @include flex-container(center, stretch, 1px, column);
 }
 
 .main__task-list {
-  @include flex-container(center, stretch, 2px, column);
+  @include flex-container(center, stretch, 1px, column);
 }
 
 .main__options {
-  background-color: var(--white-color);
   padding: 1.2rem;
   color: var(--dark-grayish-blue);
   @include flex-container(space-between, center, 0);
