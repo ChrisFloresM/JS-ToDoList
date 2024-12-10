@@ -35,16 +35,41 @@
 
 /*Span for styles */
 .task-check-style {
-  height: 2rem;
-  width: 2rem;
-  border-radius: 50%;
-  border: 2px solid var(--dark-grayish-blue);
+  height: 2.2rem;
+  width: 2.2rem;
+  border-radius: 50%;/**/
+  background-color: var(--dark-grayish-blue);
   display: inline-block;
   margin-right: 2rem;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+    background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  }
+}
+
+.task-check-style::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: var(--white-color);
+  border-radius: 50%
+}
+
+.task-check:checked + .task-check-style::before {
+  @include gradient-background('../assets/icon-check.svg', contain);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .task-check:checked + .task-check-style {
-  @include gradient-background('../assets/icon-check.svg', contain);
+  background: none;
 }
 
 .main__task:has(.task-check:checked) .main__task-description {
@@ -52,8 +77,26 @@
   color: var(--dark-grayish-blue);
 }
 
+/* Close icon */
+.close-icon {
+  font-size: 2rem;
+  color: var(--very-dark-grayish-blue);
+  opacity: 0;
+  transition: opacity 0.3s;
+  transform: scale(1.5);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.main__task.task-container:hover .close-icon {
+  opacity: 1;
+}
+
 /* Input text placeholder */
 .main__input-task::placeholder {
   color: var(--dark-grayish-blue);
 }
+
 
