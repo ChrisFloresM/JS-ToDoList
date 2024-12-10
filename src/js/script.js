@@ -1,3 +1,4 @@
+/*
 
 const inputTask = document.querySelector('#input-task');
 const addButton = document.querySelector('#add-task-button');
@@ -7,14 +8,14 @@ let tasksObjs = [];
 addButton.addEventListener('click', addTaskListener);
 retrieveFromStorage();
 
-/* Prorotype for tasks objects */
+/!* Prorotype for tasks objects *!/
 function TaskObject() {
     this.description = inputTask.value;
     this.completed = false;
     this.id = Date.now();
 }
 
-/* Event listeners */
+/!* Event listeners *!/
 function addTaskListener() {
     if (inputTask.value) {
         const newTaskObj = new TaskObject(inputTask.value);
@@ -50,7 +51,7 @@ function deleteTaskListener(event) {
     parentTask.remove();
 }
 
-/* Auxiliar functions */
+/!* Auxiliar functions *!/
 function createTask(taskObj) {
     const newTask = document.createElement('li');
     newTask.classList.add('list-container__task');
@@ -109,4 +110,4 @@ function retrieveFromStorage() {
             createTask(object);
         });
     }
-}
+}*/

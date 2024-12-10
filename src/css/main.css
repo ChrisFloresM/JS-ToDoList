@@ -274,6 +274,10 @@ body {
 }
 
 /* abstracts */
+.light {
+  transition: all 0.3s;
+}
+
 body.light {
   background-color: var(--very-light-gray);
 }
