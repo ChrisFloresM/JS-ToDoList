@@ -11,12 +11,20 @@
     font-size: 50%;
   }
 
+  .header__heading {
+    font-size: 3.6rem;
+  }
+
+  .header__button {
+    transform: scale(1);
+  }
+
   .main-container {
     width: 90%;
   }
 
   .bg-section-decorative {
-    height: 35vh;
+    height: 25vh;
   }
 
   .main__filters {
@@ -24,6 +32,30 @@
   }
 
   .main__task-list {
-    gap: 2px;
+    gap: 0.9px;
+  }
+
+  .main__list-container {
+    position: relative;
+  }
+
+  .main__filters {
+    position: absolute;
+    bottom: -6.4rem;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    background-color: inherit;
+    border-radius: 8px;
+    gap: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .main__filter-button {
+    font-size: 1.6rem;
+  }
+
+  .footer {
+    transform: translateY(6rem);
   }
 }

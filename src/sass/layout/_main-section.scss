@@ -10,8 +10,12 @@
 .main__list-container {
   width: 100%;
   background-color: var(--dark-grayish-blue);
-  overflow: hidden;
 
+  @include flex-container(center, stretch, 1px, column);
+}
+
+.main__task-list {
+  border-radius: 8px;
   @include flex-container(center, stretch, 1px, column);
 }
 
@@ -19,9 +23,16 @@
   @include flex-container(center, stretch, 1px, column);
 }
 
+.main__task-list li:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
 .main__options {
-  padding: 1.2rem;
+  padding: 2rem;
   color: var(--dark-grayish-blue);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
   @include flex-container(space-between, center, 0);
 }
 
