@@ -75,16 +75,23 @@
   color: var(--dark-grayish-blue);
 }
 
-/* Close icon */
+/* delete button styles  */
+.main__task-delete-button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .close-icon {
   font-size: 2rem;
   opacity: 0;
   transition: opacity 0.3s;
   transform: scale(1.5);
-
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 .main__task.task-container:hover .close-icon {

@@ -40,3 +40,7 @@ function setTheme() {
     defaultThemeObj.userTheme = defaultTheme;
     saveToLocalStorage("theme", JSON.stringify(defaultThemeObj));
 }
+
+export function getCurrentTheme() {
+    return defaultTheme;
+}
