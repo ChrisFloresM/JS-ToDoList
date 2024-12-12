@@ -19,8 +19,8 @@
 		<link rel="stylesheet" href="css/main.css" type="text/css">
 		<title>To-Do List</title>
 	</head>
-	<body class="change-theme">
-		<div class="bg-section-decorative change-theme"></div>
+	<body class="change-theme preload">
+		<div class="bg-section-decorative change-theme preload"></div>
 		<section class="main-container">
 			<header class="header">
 				<h2 class="header__heading">TODO</h2>
@@ -33,35 +33,35 @@
 			</header>
 
 			<main class="main">
-				<div class="main__input task-container light-shadow change-theme">
+				<div class="main__input task-container light-shadow change-theme preload">
 					<label class="main__task-label-checkbox">
 						<input class="task-check" type="checkbox" name="check">
-						<span class="task-check-style change-theme"></span>
+						<span class="task-check-style change-theme preload"></span>
 					</label>
 					<input class="main__input-task task-text" type="text" placeholder="Create a new todo...">
 				</div>
-				<div class="main__list-container light-shadow change-theme">
+				<div class="main__list-container light-shadow change-theme preload">
 					<ul class="main__task-list">
-						<li class="main__task task-container change-theme">
+						<li class="main__task task-container change-theme preload">
 							<label class="main__task-label-checkbox">
 								<input class="task-check" type="checkbox" name="check">
-								<span class="task-check-style change-theme"></span>
+								<span class="task-check-style change-theme preload"></span>
 							</label>
 							<p class="main__task-description task-text">Do homework</p>
 							<ion-icon class="close-icon" name="close-outline"></ion-icon>
 						</li>
-						<li class="main__task task-container change-theme">
+						<li class="main__task task-container change-theme preload">
 							<label class="main__task-label-checkbox">
 								<input class="task-check" type="checkbox" name="check">
-								<span class="task-check-style change-theme"></span>
+								<span class="task-check-style change-theme preload"></span>
 							</label>
 							<p class="main__task-description task-text">Wash the dishes</p>
 							<ion-icon class="close-icon" name="close-outline"></ion-icon>
 						</li>
 					</ul>
-					<div class="main__options change-theme">
+					<div class="main__options change-theme preload">
 						<p class="main__option-items-left"><span class="left-amount">5</span> items left</p>
-						<div class="main__filters change-theme">
+						<div class="main__filters change-theme preload">
 							<button class="main__filter-button option-button">All</button>
 							<button class="main__filter-button option-button">Active</button>
 							<button class="main__filter-button option-button">Completed</button>
@@ -76,13 +76,8 @@
 			</footer>
 		</section>
 
-
 		<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 		<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-		<script src="js/themeManager.js"></script>
-		<!-- Scripts -->
-<!--		<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-		<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-		<script src="js/script.js"></script>-->
+		<script type="module" src="js/themeManager.js"></script>
 	</body>
 </html>

@@ -6,3 +6,11 @@ body {
   font-family: var(--font-family), serif;
   position: relative;
 }
+
+.change-theme {
+  transition: all 0.3s;
+}
+
+.change-theme.preload {
+  transition: none;
+}

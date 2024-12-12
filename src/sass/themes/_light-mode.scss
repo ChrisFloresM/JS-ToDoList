@@ -1,10 +1,6 @@
 @use "../abstracts/variables.scss" as *;
 @use "../abstracts/mixins.scss" as *;
 
-.change-theme {
-  transition: all 0.3s ease-in-out;
-}
-
 body.light {
   background-color: var(--very-light-gray);
 }

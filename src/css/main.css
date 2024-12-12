@@ -42,6 +42,14 @@ body {
   position: relative;
 }
 
+.change-theme {
+  transition: all 0.3s;
+}
+
+.change-theme.preload {
+  transition: none;
+}
+
 /* components */
 /* abstracts */
 /* Container styles used for input and tasks */
@@ -289,10 +297,6 @@ body {
 }
 
 /* abstracts */
-.change-theme {
-  transition: all 0.3s ease-in-out;
-}
-
 body.light {
   background-color: var(--very-light-gray);
 }
