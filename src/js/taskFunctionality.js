@@ -66,6 +66,19 @@ function createTask(taskObj) {
 function addListeners(task) {
     const deleteButton = task.querySelector('button');
     deleteButton.addEventListener('click', deleteTaskListener);
+
+    const checkBox = task.querySelector('input');
+    checkBox.addEventListener('click', checkTaskListener);
+
+}
+
+function checkTaskListener() {
+    const parent = this.closest('.main__task');
+    const taskId = parent.dataset.taskId;
+
+    let taskToModify = tasksObjs.find(task => task.id === Number(taskId));
+    taskToModify.completed = this.checked;
+    saveToLocalStorage("taskObjects", JSON.stringify(tasksObjs));
 }
 
 function deleteTaskListener(event) {
