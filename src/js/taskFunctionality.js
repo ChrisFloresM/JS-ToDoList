@@ -1,5 +1,6 @@
 import {retrieveFromStorage, saveToLocalStorage} from "./localStorageManager.js";
 import {getCurrentTheme} from "./themeManager.js";
+import {updateTaskCount} from "./itemsCount.js";
 
 const taskList = document.querySelector('.main__task-list');
 const inputTask = document.querySelector('.main__input-task');
@@ -63,6 +64,10 @@ function createTask(taskObj) {
 
     addTaskListeners(newTask);
     taskList.appendChild(newTask);
+
+    if (!taskObj.completed) {
+       updateTaskCount(taskObj.completed);
+    }
 }
 
 function addTaskListeners(task) {
@@ -71,7 +76,6 @@ function addTaskListeners(task) {
 
     const checkBox = task.querySelector('input');
     checkBox.addEventListener('click', checkTaskListener);
-
 }
 
 function checkTaskListener() {
@@ -81,15 +85,25 @@ function checkTaskListener() {
     let taskToModify = tasksObjs.find(task => task.id === Number(taskId));
     taskToModify.completed = this.checked;
     saveToLocalStorage("taskObjects", JSON.stringify(tasksObjs));
+    updateTaskCount(taskToModify.completed);
 }
 
 function deleteTaskListener(event) {
     const button = event.target;
     const parentTask = button.closest('.main__task');
+    const removeElement = true;
+    let taskObj;
 
     const taskId = parentTask.dataset.taskId;
+    taskObj = tasksObjs.find(task => task.id === Number(taskId));
     tasksObjs = tasksObjs.filter(task => task.id !== Number(taskId));
+
     saveToLocalStorage("taskObjects", JSON.stringify(tasksObjs));
+
+    if (!taskObj.completed) {
+        updateTaskCount(removeElement);
+    }
 
     parentTask.remove();
 }
+

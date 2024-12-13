@@ -17,7 +17,12 @@
 .main__task-list {
   border-radius: 8px;
   @include flex-container(center, stretch, 1px, column);
+
+  &:empty {
+    display: none;
+  }
 }
+
 
 .main__task-list {
   @include flex-container(center, stretch, 1px, column);
@@ -34,6 +39,10 @@
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   @include flex-container(space-between, center, 0);
+}
+
+.main__task-list:empty + .main__options {
+  border-radius: 8px;
 }
 
 .main__option-items-left {

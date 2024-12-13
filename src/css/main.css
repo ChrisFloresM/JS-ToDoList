@@ -242,6 +242,9 @@ body {
   align-items: stretch;
   gap: 1px;
 }
+.main__task-list:empty {
+  display: none;
+}
 
 .main__task-list {
   display: flex;
@@ -266,6 +269,10 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 0;
+}
+
+.main__task-list:empty + .main__options {
+  border-radius: 8px;
 }
 
 .main__option-items-left {
