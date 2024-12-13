@@ -2,7 +2,6 @@ import {retrieveFromStorage, saveToLocalStorage} from "./localStorageManager.js"
 
 /* Getting the buttons elements */
 const changeThemeButton = document.querySelector(".header__button");
-const themedElements = document.querySelectorAll('.change-theme');
 const buttonIcon = document.querySelector(".header__button-icon");
 
 const buttonIconSrc = new Map();
@@ -28,6 +27,7 @@ changeThemeButton.addEventListener("click", () => {
 });
 
 function setTheme() {
+    const themedElements = document.querySelectorAll('.change-theme');
     const removeTheme = defaultTheme === 'light' ? 'dark' : 'light';
 
     themedElements.forEach(element => {

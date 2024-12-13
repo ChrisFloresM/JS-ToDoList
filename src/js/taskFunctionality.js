@@ -3,12 +3,14 @@ import {getCurrentTheme} from "./themeManager.js";
 
 const taskList = document.querySelector('.main__task-list');
 const inputTask = document.querySelector('.main__input-task');
+const checkBoxInput = document.querySelector('.main__input .task-check');
+
 let tasksObjs = [];
 
 /* Prototype for tasks objects */
 function TaskObject() {
     this.description = inputTask.value;
-    this.completed = false;
+    this.completed = checkBoxInput.checked;
     this.id = Date.now();
 }
 
@@ -16,6 +18,7 @@ init();
 
 function init() {
     tasksObjs = retrieveFromStorage("taskObjects", []);
+
     if (tasksObjs.length > 0) {
         tasksObjs.forEach(object => {
             createTask(object);
@@ -55,15 +58,14 @@ function createTask(taskObj) {
 		  <ion-icon class="close-icon" name="close-outline"></ion-icon>
 		</button>`
 
-
     const taskCheckbox = newTask.querySelector('.task-check');
     taskCheckbox.checked = taskObj.completed;
 
-    addListeners(newTask);
+    addTaskListeners(newTask);
     taskList.appendChild(newTask);
 }
 
-function addListeners(task) {
+function addTaskListeners(task) {
     const deleteButton = task.querySelector('button');
     deleteButton.addEventListener('click', deleteTaskListener);
 

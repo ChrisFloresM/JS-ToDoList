@@ -71,6 +71,7 @@ body {
   font-family: inherit;
   border: none;
   background: transparent;
+  line-height: 1.2;
 }
 
 /* Radio button styles */
@@ -410,6 +411,13 @@ body.dark {
   }
   .footer {
     transform: translateY(6rem);
+  }
+}
+/* Media querie for devices without hover states */
+@media (hover: none) and (pointer: coarse) {
+  .close-icon {
+    opacity: 1;
+    transition: none;
   }
 }
 
