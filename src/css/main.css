@@ -441,11 +441,7 @@ body.dark {
     opacity: 1;
     transition: none;
   }
-  .task-check-style:hover {
-    cursor: none;
-    background-color: var(--dark-grayish-blue);
-  }
-  .task-check-style:active {
+  .task-check-style {
     background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   }
 }

@@ -68,13 +68,6 @@
   }
 
   .task-check-style {
-    &:hover {
-      cursor: none;
-      background-color: var(--dark-grayish-blue);
-    }
-
-    &:active {
-      background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%))
-    }
+    background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   }
 }
