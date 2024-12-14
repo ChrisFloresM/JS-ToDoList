@@ -28,10 +28,10 @@
   @include flex-container(center, stretch, 1px, column);
 }
 
-.main__task-list li:first-child {
+/*.main__task-list li:first-child {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-}
+}*/
 
 .main__options {
   padding: 2rem;

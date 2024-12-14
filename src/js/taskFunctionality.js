@@ -1,6 +1,7 @@
 import {retrieveFromStorage, saveToLocalStorage} from "./localStorageManager.js";
 import {getCurrentTheme} from "./themeManager.js";
 import {updateTaskCount} from "./itemsCount.js";
+import {setFilter} from "./filterButtons.js";
 
 const taskList = document.querySelector('.main__task-list');
 const inputTask = document.querySelector('.main__input-task');
@@ -64,6 +65,7 @@ function createTask(taskObj) {
 
     addTaskListeners(newTask);
     taskList.appendChild(newTask);
+    setFilter(newTask);
 
     if (!taskObj.completed) {
        updateTaskCount(taskObj.completed);
@@ -84,8 +86,10 @@ function checkTaskListener() {
 
     let taskToModify = tasksObjs.find(task => task.id === Number(taskId));
     taskToModify.completed = this.checked;
+
     saveToLocalStorage("taskObjects", JSON.stringify(tasksObjs));
     updateTaskCount(taskToModify.completed);
+    setFilter(parent);
 }
 
 function deleteTaskListener(event) {

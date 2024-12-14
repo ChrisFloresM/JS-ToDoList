@@ -159,6 +159,11 @@ body {
   color: var(--dark-grayish-blue);
 }
 
+/* Adding the styles when a tasks is being filtered */
+.filtered {
+  display: none;
+}
+
 /* abstracts */
 .option-button {
   background: none;
@@ -170,6 +175,10 @@ body {
 }
 .option-button:hover {
   cursor: pointer;
+  color: var(--primary-blue);
+}
+
+.active-filter {
   color: var(--primary-blue);
 }
 
@@ -254,11 +263,10 @@ body {
   gap: 1px;
 }
 
-.main__task-list li:first-child {
+/*.main__task-list li:first-child {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-}
-
+}*/
 .main__options {
   padding: 2rem;
   color: var(--dark-grayish-blue);
