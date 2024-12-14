@@ -445,12 +445,9 @@ body.dark {
     cursor: none;
     color: inherit;
   }
-  .option-button:active {
-    color: var(--primary-blue);
-  }
   .task-check-style:hover {
     cursor: none;
-    background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    background: inherit;
   }
   .task-check-style:active {
     background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
