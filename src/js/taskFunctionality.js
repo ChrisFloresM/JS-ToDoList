@@ -6,6 +6,7 @@ import {setFilter, fixRoundedElements} from "./filterButtons.js";
 const taskList = document.querySelector('.main__task-list');
 const inputTask = document.querySelector('.main__input-task');
 const checkBoxInput = document.querySelector('.main__input .task-check');
+const clearCompletedButton = document.querySelector('.main__option-clear-completed');
 
 let tasksObjs = [];
 
@@ -33,6 +34,8 @@ inputTask.addEventListener('keypress', (event) => {
         addTaskListener();
     }
 });
+
+clearCompletedButton.addEventListener('click', clearCompletedListener);
 
 /* Functions and listeners*/
 function addTaskListener() {
@@ -112,3 +115,12 @@ function deleteTaskListener(event) {
     fixRoundedElements();
 }
 
+function clearCompletedListener() {
+    const completedTasks = document.querySelectorAll('.main__task:has(.task-check:checked)');
+
+    completedTasks.forEach(task => {
+        task.remove();
+    });
+
+    fixRoundedElements();
+}
