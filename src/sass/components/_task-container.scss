@@ -42,6 +42,7 @@
   display: inline-block;
   margin-right: 2rem;
   position: relative;
+  -webkit-tap-highlight-color: transparent;
 
   &:hover {
     cursor: pointer;
@@ -56,7 +57,8 @@
   left: 2px;
   right: 2px;
   bottom: 2px;
-  border-radius: 50%
+  border-radius: 50%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .task-check:checked + .task-check-style::before {
@@ -102,6 +104,11 @@
 /* Input text placeholder */
 .main__input-task::placeholder {
   color: var(--dark-grayish-blue);
+}
+
+.main__input-task:focus {
+  outline: none;
+  border-bottom: 1px solid var(--primary-blue);
 }
 
 /* Adding the styles when a tasks is being filtered */

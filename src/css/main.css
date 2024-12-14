@@ -43,7 +43,7 @@ body {
 }
 
 .change-theme {
-  transition: all 0.3s;
+  transition: background-color 0.3s;
 }
 
 .change-theme.preload {
@@ -96,6 +96,7 @@ body {
   display: inline-block;
   margin-right: 2rem;
   position: relative;
+  -webkit-tap-highlight-color: transparent;
 }
 .task-check-style:hover {
   cursor: pointer;
@@ -110,6 +111,7 @@ body {
   right: 2px;
   bottom: 2px;
   border-radius: 50%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .task-check:checked + .task-check-style::before {
@@ -157,6 +159,11 @@ body {
 /* Input text placeholder */
 .main__input-task::placeholder {
   color: var(--dark-grayish-blue);
+}
+
+.main__input-task:focus {
+  outline: none;
+  border-bottom: 1px solid var(--primary-blue);
 }
 
 /* Adding the styles when a tasks is being filtered */
@@ -429,10 +436,24 @@ body.dark {
   }
 }
 /* Media querie for devices without hover states */
-@media (hover: none) and (pointer: coarse) {
+@media (pointer: coarse) {
   .close-icon {
     opacity: 1;
     transition: none;
+  }
+  .option-button:hover {
+    cursor: none;
+    color: inherit;
+  }
+  .option-button:active {
+    color: var(--primary-blue);
+  }
+  .task-check-style:hover {
+    cursor: none;
+    background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  }
+  .task-check-style:active {
+    background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   }
 }
 

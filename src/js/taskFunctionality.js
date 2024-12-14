@@ -1,7 +1,7 @@
 import {retrieveFromStorage, saveToLocalStorage} from "./localStorageManager.js";
 import {getCurrentTheme} from "./themeManager.js";
 import {updateTaskCount} from "./itemsCount.js";
-import {setFilter} from "./filterButtons.js";
+import {setFilter, fixRoundedElements} from "./filterButtons.js";
 
 const taskList = document.querySelector('.main__task-list');
 const inputTask = document.querySelector('.main__input-task');
@@ -109,5 +109,6 @@ function deleteTaskListener(event) {
     }
 
     parentTask.remove();
+    fixRoundedElements();
 }
 

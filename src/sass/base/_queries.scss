@@ -61,9 +61,31 @@
 }
 
 /* Media querie for devices without hover states */
-@media (hover: none) and (pointer: coarse) {
+@media (pointer: coarse) {
   .close-icon {
     opacity: 1;
     transition: none;
+  }
+
+  .option-button {
+    &:hover {
+      cursor: none;
+      color: inherit;
+    }
+
+    &:active {
+      color: var(--primary-blue);
+    }
+  }
+
+  .task-check-style {
+    &:hover {
+      cursor: none;
+      background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    }
+
+    &:active {
+      background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%))
+    }
   }
 }

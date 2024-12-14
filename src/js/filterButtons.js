@@ -89,7 +89,7 @@ export function setFilter(task) {
 }
 
 
-function fixRoundedElements() {
+export function fixRoundedElements() {
     const notFilteredElements = document.querySelectorAll('li:not(.filtered)');
     const optionsElement = document.querySelector('.main__options');
 
