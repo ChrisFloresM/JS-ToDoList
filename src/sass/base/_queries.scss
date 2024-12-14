@@ -67,17 +67,10 @@
     transition: none;
   }
 
-  .option-button {
-    &:hover {
-      cursor: none;
-      color: inherit;
-    }
-  }
-
   .task-check-style {
     &:hover {
       cursor: none;
-      background: inherit;
+      background-color: var(--dark-grayish-blue);
     }
 
     &:active {
