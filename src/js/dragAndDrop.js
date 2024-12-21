@@ -22,7 +22,7 @@ function startDrag(ev) {
         touchTimeout = setTimeout(() => {
             startDragging = true;
             startDragActions(ev);
-        }, 1000);
+        }, 200);
     } else {
         startDragActions(ev);
     }
