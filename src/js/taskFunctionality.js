@@ -119,8 +119,7 @@ function clearCompletedListener() {
     const completedTasks = document.querySelectorAll('.main__task:has(.task-check:checked)');
 
     completedTasks.forEach(task => {
-        task.remove();
+        const deleteButton = task.querySelector('.main__task-delete-button');
+        deleteButton.click();
     });
-
-    fixRoundedElements();
 }
