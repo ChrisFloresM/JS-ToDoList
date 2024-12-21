@@ -21,7 +21,7 @@ function startDrag(ev) {
 
     let touch = ev.touches ? ev.touches[0] : ev;
     offsetX = touch.clientX;
-    offsetY = touch.clientY;
+    offsetY = touch.clientY - draggable.getBoundingClientRect().top;
 
     placeholder = document.createElement('li');
     placeholder.classList.add('placeholder');
