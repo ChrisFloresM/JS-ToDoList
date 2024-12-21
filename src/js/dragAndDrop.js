@@ -13,8 +13,6 @@ let offsetX = 0, offsetY = 0;
 let touchTimeout;
 
 function startDrag(ev) {
-    ev.preventDefault();
-
     if (ev.type === "touchstart") {
         touchTimeout = setTimeout(() => {
             startDragActions(ev);
@@ -25,6 +23,8 @@ function startDrag(ev) {
 }
 
 function startDragActions(ev) {
+    ev.preventDefault();
+
     isDragging = true;
     draggable = ev.currentTarget;
     draggable.classList.add('dragging');
