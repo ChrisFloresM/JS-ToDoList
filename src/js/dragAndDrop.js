@@ -3,7 +3,7 @@ import { saveNewTasksOrder } from "./taskFunctionality.js";
 
 export function addDragAndDropHandlers(element) {
     element.addEventListener("mousedown", startDrag);
-    element.addEventListener("touchstart", startDrag, { passive: false });
+    element.addEventListener("touchstart", startDrag);
 }
 
 let isDragging = false;
@@ -14,6 +14,9 @@ let touchTimeout;
 let startDragging = false;
 
 function startDrag(ev) {
+    isDragging = true;
+    draggable = ev.currentTarget;
+
     if (ev.type === "touchstart") {
         startDragging = false;
         touchTimeout = setTimeout(() => {
@@ -28,8 +31,6 @@ function startDrag(ev) {
 function startDragActions(ev) {
     ev.preventDefault();
 
-    isDragging = true;
-    draggable = ev.currentTarget;
     draggable.classList.add('dragging');
     draggable.style.cursor = 'grabbing';
 
@@ -83,7 +84,7 @@ function moveAt(clientX, clientY) {
 
 function stopDrag(ev) {
     if (ev.type === "touchend") {
-/*        clearTimeout(touchTimeout);*/
+        clearTimeout(touchTimeout);
         if(!startDragging) return;
     }
     stopDragActions();
