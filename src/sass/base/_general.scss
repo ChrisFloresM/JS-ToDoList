@@ -5,6 +5,10 @@ html {
 body {
   font-family: var(--font-family), serif;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
 }
 
 .change-theme {

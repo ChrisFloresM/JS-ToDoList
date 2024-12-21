@@ -40,6 +40,10 @@ html {
 body {
   font-family: var(--font-family), serif;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
 }
 
 .change-theme {
@@ -204,15 +208,15 @@ body {
 .bg-section-decorative {
   height: 35vh;
   width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -10;
 }
 
 .main-container {
   width: 35%;
   height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 /* abstracts */

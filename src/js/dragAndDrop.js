@@ -20,15 +20,26 @@ function startDrag(ev) {
     draggable.style.cursor = 'grabbing';
 
     let touch = ev.touches ? ev.touches[0] : ev;
-    offsetX = touch.clientX;
-    offsetY = touch.clientY - draggable.getBoundingClientRect().top;
+    offsetX = touch.clientX - draggable.getBoundingClientRect().left;
+    offsetY = touch.clientY - draggable.getBoundingClientRect().top - window.scrollY;
+
+    /* Debugging */
+/*    console.log(`clientX: ${touch.clientX}`);
+    console.log(`clientY: ${touch.clientY}`);
+    console.log(`left: ${draggable.getBoundingClientRect().left}`);
+    console.log(`top: ${draggable.getBoundingClientRect().top}`);
+    console.log(`OffsetX: ${offsetX}`);
+    console.log(`OffsetY: ${offsetY}`);*/
+
 
     placeholder = document.createElement('li');
-    placeholder.classList.add('placeholder');
+    placeholder.classList.add('placeholder', 'task-container');
     placeholder.style.height = `${draggable.offsetHeight}px`;
     draggable.parentNode.insertBefore(placeholder, draggable);
 
+    let currentWidth = draggable.getBoundingClientRect().width;
     draggable.style.position = 'absolute';
+    draggable.style.width = String(currentWidth) + "px";
     moveAt(touch.clientX, touch.clientY);
 
     document.addEventListener('mousemove', onMove);
@@ -63,6 +74,8 @@ function onMove(ev) {
 function moveAt(clientX, clientY) {
     draggable.style.left = `${clientX - offsetX}px`;
     draggable.style.top = `${clientY - offsetY}px`;
+/*    console.log(`new left: ${draggable.style.left}px`);
+    console.log(`new top: ${draggable.style.top}px`);*/
 }
 
 function stopDrag() {
