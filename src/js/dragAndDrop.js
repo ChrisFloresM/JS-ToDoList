@@ -11,10 +11,13 @@ let draggable;
 let placeholder;
 let offsetX = 0, offsetY = 0;
 let touchTimeout;
+let startDragging = false;
 
 function startDrag(ev) {
     if (ev.type === "touchstart") {
+        startDragging = false;
         touchTimeout = setTimeout(() => {
+            startDragging = true;
             startDragActions(ev);
         }, 1000);
     } else {
@@ -79,15 +82,16 @@ function moveAt(clientX, clientY) {
 }
 
 function stopDrag(ev) {
-    if (!draggable) return;
-
     if (ev.type === "touchend") {
         clearTimeout(touchTimeout);
+        if(!startDragging) return;
     }
     stopDragActions();
 }
 
 function stopDragActions() {
+    if (!draggable) return;
+
     isDragging = false;
     draggable.style.pointerEvents = 'auto';
 
