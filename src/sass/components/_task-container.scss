@@ -5,6 +5,8 @@
 .task-container {
   width: 100%;
   padding: 2rem;
+  cursor: pointer;
+  user-select: none;
 
   @include flex-container(center, center, 0);
 }

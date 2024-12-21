@@ -2,6 +2,7 @@ import {retrieveFromStorage, saveToLocalStorage} from "./localStorageManager.js"
 import {getCurrentTheme} from "./themeManager.js";
 import {updateTaskCount} from "./itemsCount.js";
 import {setFilter, fixRoundedElements} from "./filterButtons.js";
+import {addDragAndDropHandlers} from "./dragAndDrop.js";
 
 const taskList = document.querySelector('.main__task-list');
 const inputTask = document.querySelector('.main__input-task');
@@ -81,6 +82,8 @@ function addTaskListeners(task) {
 
     const checkBox = task.querySelector('input');
     checkBox.addEventListener('click', checkTaskListener);
+
+    addDragAndDropHandlers(task);
 }
 
 function checkTaskListener() {
@@ -122,4 +125,19 @@ function clearCompletedListener() {
         const deleteButton = task.querySelector('.main__task-delete-button');
         deleteButton.click();
     });
+}
+
+export function saveNewTasksOrder() {
+    const tasks = document.querySelectorAll('.main__task');
+
+
+    tasks.forEach((task, index) => {
+        tasksObjs[index] = {
+            description: task.querySelector('.main__task-description').textContent,
+            completed: task.querySelector('.task-check').checked,
+            id: task.dataset.taskId
+        }
+    });
+
+    saveToLocalStorage("taskObjects", JSON.stringify(tasksObjs));
 }

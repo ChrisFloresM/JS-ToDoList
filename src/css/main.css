@@ -50,12 +50,23 @@ body {
   transition: none;
 }
 
+.placeholder {
+  opacity: 0;
+}
+
+.task-container.dragging {
+  opacity: 0.5;
+  z-index: 9999;
+}
+
 /* components */
 /* abstracts */
 /* Container styles used for input and tasks */
 .task-container {
   width: 100%;
   padding: 2rem;
+  cursor: pointer;
+  user-select: none;
   display: flex;
   flex-direction: row;
   justify-content: center;

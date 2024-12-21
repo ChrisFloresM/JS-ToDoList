@@ -3,6 +3,7 @@
 
 /* General styles */
 @use "base/general.scss";
+@use "base/dragAndDrop.scss";
 
 /* components */
 @use "components/task-container.scss";
