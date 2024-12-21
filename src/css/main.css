@@ -429,9 +429,6 @@ body.dark {
   .main__task-list {
     gap: 0.9px;
   }
-  .main__list-container {
-    position: relative;
-  }
   .main__filters {
     position: absolute;
     bottom: -6.4rem;

@@ -135,8 +135,8 @@ export function saveNewTasksOrder() {
         tasksObjs[index] = {
             description: task.querySelector('.main__task-description').textContent,
             completed: task.querySelector('.task-check').checked,
-            id: task.dataset.taskId
-        }
+            id: Number(task.dataset.taskId)
+        };
     });
 
     saveToLocalStorage("taskObjects", JSON.stringify(tasksObjs));
