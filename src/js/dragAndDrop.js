@@ -10,10 +10,21 @@ let isDragging = false;
 let draggable;
 let placeholder;
 let offsetX = 0, offsetY = 0;
+let touchTimeout;
 
 function startDrag(ev) {
     ev.preventDefault();
 
+    if (ev.type === "touchstart") {
+        touchTimeout = setTimeout(() => {
+            startDragActions(ev);
+        }, 1000);
+    } else {
+        startDragActions(ev);
+    }
+}
+
+function startDragActions(ev) {
     isDragging = true;
     draggable = ev.currentTarget;
     draggable.classList.add('dragging');
@@ -22,15 +33,6 @@ function startDrag(ev) {
     let touch = ev.touches ? ev.touches[0] : ev;
     offsetX = touch.clientX - draggable.getBoundingClientRect().left;
     offsetY = touch.clientY - draggable.getBoundingClientRect().top - window.scrollY;
-
-    /* Debugging */
-/*    console.log(`clientX: ${touch.clientX}`);
-    console.log(`clientY: ${touch.clientY}`);
-    console.log(`left: ${draggable.getBoundingClientRect().left}`);
-    console.log(`top: ${draggable.getBoundingClientRect().top}`);
-    console.log(`OffsetX: ${offsetX}`);
-    console.log(`OffsetY: ${offsetY}`);*/
-
 
     placeholder = document.createElement('li');
     placeholder.classList.add('placeholder', 'task-container');
@@ -74,13 +76,18 @@ function onMove(ev) {
 function moveAt(clientX, clientY) {
     draggable.style.left = `${clientX - offsetX}px`;
     draggable.style.top = `${clientY - offsetY}px`;
-/*    console.log(`new left: ${draggable.style.left}px`);
-    console.log(`new top: ${draggable.style.top}px`);*/
 }
 
-function stopDrag() {
+function stopDrag(ev) {
     if (!draggable) return;
 
+    if (ev.type === "touchend") {
+        clearTimeout(touchTimeout);
+    }
+    stopDragActions();
+}
+
+function stopDragActions() {
     isDragging = false;
     draggable.style.pointerEvents = 'auto';
 
