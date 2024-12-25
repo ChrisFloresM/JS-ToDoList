@@ -16,6 +16,9 @@ function startDrag(ev) {
     isDragging = true;
     draggable = ev.currentTarget;
 
+    // Verifica si el clic fue sobre el checkbox o el botón
+    if (ev.target.tagName === 'SPAN' || ev.target.tagName === 'BUTTON' || ev.target.tagName === 'ION-ICON') return;
+
     if (ev.type === "touchstart") {
         startDragging = false;
         touchTimeout = setTimeout(() => {
@@ -28,6 +31,7 @@ function startDrag(ev) {
 }
 
 function startDragActions(ev) {
+    if(!draggable) return;
     ev.preventDefault();
 
     draggable.classList.add('dragging');

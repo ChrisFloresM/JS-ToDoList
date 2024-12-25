@@ -86,7 +86,8 @@ function addTaskListeners(task) {
     addDragAndDropHandlers(task);
 }
 
-function checkTaskListener() {
+function checkTaskListener(event) {
+    event.stopPropagation();
     const parent = this.closest('.main__task');
     const taskId = parent.dataset.taskId;
 
@@ -99,6 +100,7 @@ function checkTaskListener() {
 }
 
 function deleteTaskListener(event) {
+    event.stopPropagation();
     const button = event.target;
     const parentTask = button.closest('.main__task');
     const removeElement = true;
