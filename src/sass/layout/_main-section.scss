@@ -10,12 +10,12 @@
 .main__list-container {
   width: 100%;
   background-color: var(--dark-grayish-blue);
+  overflow: hidden;
 
   @include flex-container(center, stretch, 1px, column);
 }
 
 .main__task-list {
-  border-radius: 8px;
   @include flex-container(center, stretch, 1px, column);
 
   &:empty {
@@ -35,13 +35,7 @@
 .main__options {
   padding: 2rem;
   color: var(--dark-grayish-blue);
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
   @include flex-container(space-between, center, 0);
-}
-
-.main__task-list:empty + .main__options {
-  border-radius: 8px;
 }
 
 .main__option-items-left {
@@ -62,4 +56,8 @@
 
 .main__input, .main__list-container {
   border-radius: 8px;
+}
+
+.main__filters-mobile {
+  display: none;
 }
