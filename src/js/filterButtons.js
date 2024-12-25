@@ -1,8 +1,10 @@
 import {retrieveFromStorage, saveToLocalStorage} from "./localStorageManager.js";
 
-const filterButtonAll = document.querySelector('.main__filter-button--all');
-const filterButtonActive = document.querySelector('.main__filter-button--active');
-const filterButtonCompleted = document.querySelector('.main__filter-button--completed');
+const mediaQuery = window.matchMedia('(max-width: 610px)');
+
+const filterButtonAll = mediaQuery.matches ? document.querySelector('.main__filter-button--all.mobile') : document.querySelector('.main__filter-button--all:not(.mobile)');
+const filterButtonActive = mediaQuery.matches ? document.querySelector('.main__filter-button--active.mobile') : document.querySelector('.main__filter-button--active:not(.mobile)');
+const filterButtonCompleted = mediaQuery.matches ? document.querySelector('.main__filter-button--completed.mobile') : document.querySelector('.main__filter-button--completed:not(.mobile)');
 
 let currentFilterObj = retrieveFromStorage("filter", {currentFilter: "all"});
 
@@ -84,30 +86,9 @@ export function setFilter(task) {
     } else {
         task.classList.remove('filtered');
     }
-
-    fixRoundedElements();
 }
 
-
-export function fixRoundedElements() {
-    const notFilteredElements = document.querySelectorAll('li:not(.filtered)');
-    const optionsElement = document.querySelector('.main__options');
-
-    if (notFilteredElements.length === 0) {
-        optionsElement.style.borderTopLeftRadius = "8px";
-        optionsElement.style.borderTopRightRadius = "8px";
-
-        return;
-    }
-
-    optionsElement.style.borderTopLeftRadius = "0px";
-    optionsElement.style.borderTopRightRadius = "0px";
-
-    notFilteredElements.forEach(notFilteredElement => {
-        notFilteredElement.style.borderTopLeftRadius = "0px";
-        notFilteredElement.style.borderTopRightRadius = "0px";
-    });
-
-    notFilteredElements[0].style.borderTopLeftRadius = "8px";
-    notFilteredElements[0].style.borderTopRightRadius = "8px";
+function isMobileDevice() {
+    return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
+

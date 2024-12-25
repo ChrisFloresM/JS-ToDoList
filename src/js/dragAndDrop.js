@@ -1,4 +1,3 @@
-import { fixRoundedElements } from "./filterButtons.js";
 import { saveNewTasksOrder } from "./taskFunctionality.js";
 
 export function addDragAndDropHandlers(element) {
@@ -112,6 +111,5 @@ function stopDragActions() {
     document.removeEventListener('touchmove', onMove);
     document.removeEventListener('touchend', stopDrag);
 
-    fixRoundedElements();
     saveNewTasksOrder();
 }
