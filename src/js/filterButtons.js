@@ -18,7 +18,7 @@ function setFilterButton() {
             break;
         case "active":
             filterButtonActive.classList.add("active-filter");
-            filterButtonAll.classList.remove("active-filter");
+            filterButtonAll.classList.remove("active-filter")
             filterButtonCompleted.classList.remove("active-filter");
             break;
         case "completed":
