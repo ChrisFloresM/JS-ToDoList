@@ -88,7 +88,6 @@ function moveAt(clientX, clientY) {
 function stopDrag(ev) {
     if (ev.type === "touchend") {
         clearTimeout(touchTimeout);
-        if(!startDragging) return;
     }
     stopDragActions();
 }
