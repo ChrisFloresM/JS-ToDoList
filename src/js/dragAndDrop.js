@@ -22,9 +22,10 @@ function startDrag(ev) {
         touchTimeout = setTimeout(() => {
             alert(`triggered event: ${ev.type} from timeout`); /* Debug line, remove after */
             startDragActions(ev);
+            draggable.style.backgroundColor = 'blue';
         }, 10000);
     } else {
-        alert(`triggered event: ${ev.type} whitout timeout`); /* Debug line, remove after */
+        draggable.style.backgroundColor = 'red'; /* Debug line, remove after */
         startDragActions(ev);
     }
 }
@@ -128,4 +129,5 @@ function stopDragActions() {
 
 /*
 * When holding, touchend triggered.
+* wihtout holding, toucend not triggered. Mousedown event is triggered before touchstart on iOS devices.
 * */
