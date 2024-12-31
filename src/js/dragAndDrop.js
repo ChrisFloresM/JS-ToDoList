@@ -20,9 +20,11 @@ function startDrag(ev) {
 
     if (ev.type === "touchstart") {
         touchTimeout = setTimeout(() => {
+            alert(`triggered event: ${ev.type} from timeout`);
             startDragActions(ev);
         }, 200);
     } else {
+        alert(`triggered event: ${ev.type} whitout timeout`);
         startDragActions(ev);
     }
 }
@@ -122,3 +124,8 @@ function stopDragActions() {
     /* Save the new order of the task list in local storage */
     saveNewTasksOrder();
 }
+
+
+/*
+* When holding, touchend triggered.
+* */
