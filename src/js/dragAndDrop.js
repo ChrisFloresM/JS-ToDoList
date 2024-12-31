@@ -20,11 +20,11 @@ function startDrag(ev) {
 
     if (ev.type === "touchstart") {
         touchTimeout = setTimeout(() => {
-            alert(`triggered event: ${ev.type} from timeout`);
+            alert(`triggered event: ${ev.type} from timeout`); /* Debug line, remove after */
             startDragActions(ev);
-        }, 200);
+        }, 10000);
     } else {
-        alert(`triggered event: ${ev.type} whitout timeout`);
+        alert(`triggered event: ${ev.type} whitout timeout`); /* Debug line, remove after */
         startDragActions(ev);
     }
 }
@@ -86,7 +86,7 @@ function moveAt(clientX, clientY) {
 
 function stopDrag(ev) {
     if (ev.type === "touchend") {
-        alert("touchend correctly called");
+        alert("touchend correctly called"); /* Debug line, remove after */
         clearTimeout(touchTimeout); /* On iOS devices, this seems to not being handled correctly */
     }
     stopDragActions();
