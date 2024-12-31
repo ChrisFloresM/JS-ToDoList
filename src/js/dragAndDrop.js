@@ -19,10 +19,7 @@ function startDrag(ev) {
     // Check only for valid elements to prevent blocking other events
     if (ev.target.tagName === 'SPAN' || ev.target.tagName ===  'BUTTON' || ev.target.tagName === 'ION-ICON') return;
 
-    if (touchDetected && ev.type === "mousedown") return;
-
     if (ev.type === "touchstart") {
-        touchDetected = true;
         touchTimeout = setTimeout(() => {
             startDragActions(ev);
         }, 200);
@@ -89,7 +86,6 @@ function moveAt(clientX, clientY) {
 function stopDrag(ev) {
     if (ev.type === "touchend") {
         clearTimeout(touchTimeout); /* On iOS devices, this seems to not being handled correctly */
-        touchDetected = false;
     }
     stopDragActions();
 }
