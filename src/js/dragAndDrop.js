@@ -10,6 +10,7 @@ let draggable;
 let placeholder;
 let offsetX = 0, offsetY = 0;
 let touchTimeout;
+let touchDetected;
 
 function startDrag(ev) {
     isDragging = true;
@@ -18,14 +19,14 @@ function startDrag(ev) {
     // Check only for valid elements to prevent blocking other events
     if (ev.target.tagName === 'SPAN' || ev.target.tagName ===  'BUTTON' || ev.target.tagName === 'ION-ICON') return;
 
+    if (touchDetected && ev.type === "mousedown") return;
+
     if (ev.type === "touchstart") {
+        touchDetected = true;
         touchTimeout = setTimeout(() => {
-            alert(`triggered event: ${ev.type} from timeout`); /* Debug line, remove after */
             startDragActions(ev);
-            draggable.style.backgroundColor = 'blue';
-        }, 10000);
+        }, 200);
     } else {
-        draggable.style.backgroundColor = 'red'; /* Debug line, remove after */
         startDragActions(ev);
     }
 }
@@ -87,8 +88,8 @@ function moveAt(clientX, clientY) {
 
 function stopDrag(ev) {
     if (ev.type === "touchend") {
-        alert("touchend correctly called"); /* Debug line, remove after */
         clearTimeout(touchTimeout); /* On iOS devices, this seems to not being handled correctly */
+        touchDetected = false;
     }
     stopDragActions();
 }
