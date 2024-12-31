@@ -10,7 +10,6 @@ let draggable;
 let placeholder;
 let offsetX = 0, offsetY = 0;
 let touchTimeout;
-let touchDetected;
 
 function startDrag(ev) {
     isDragging = true;
@@ -20,10 +19,12 @@ function startDrag(ev) {
     if (ev.target.tagName === 'SPAN' || ev.target.tagName ===  'BUTTON' || ev.target.tagName === 'ION-ICON') return;
 
     if (ev.type === "touchstart") {
+        console.log("On touchstart");
         touchTimeout = setTimeout(() => {
             startDragActions(ev);
         }, 200);
     } else {
+        console.log("On mousedown");
         startDragActions(ev);
     }
 }
@@ -84,9 +85,7 @@ function moveAt(clientX, clientY) {
 }
 
 function stopDrag(ev) {
-    if (ev.type === "touchend") {
-        clearTimeout(touchTimeout); /* On iOS devices, this seems to not being handled correctly */
-    }
+    clearTimeout(touchTimeout); /* On iOS devices, this seems to not being handled correctly */
     stopDragActions();
 }
 
