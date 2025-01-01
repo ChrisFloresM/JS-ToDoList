@@ -23,7 +23,6 @@ function startDrag(ev) {
         touchTimeout = setTimeout(() => {
             startDragActions(ev);
         }, 200);
-        document.addEventListener('touchend', stopDrag, {passive: false});
     } else {
         /* TODO: Debug code*/
 /*        createDebugLiElement("on mouse down");*/
@@ -125,8 +124,8 @@ function stopDragActions(ev) {
     draggable.style.left = '';
 
     /* Delete the placeholder (multiple placeholders for iOs devices) */
-    const palceholders = document.querySelectorAll('.placeholder');
-    placeholder.forEach(placeholder => {
+    const placeholders = document.querySelectorAll('.placeholder');
+    placeholders.forEach(placeholder => {
         placeholder.remove();
     })
 
