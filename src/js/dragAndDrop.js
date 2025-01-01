@@ -14,6 +14,9 @@ let touchTimeout;
 function startDrag(ev) {
     isDragging = true;
     draggable = ev.currentTarget;
+    /* Debug code*/
+    createDebugLiElement(ev.type);
+    /* End debug code*/
 
     // Check only for valid elements to prevent blocking other events
     if (ev.target.tagName === 'SPAN' || ev.target.tagName ===  'BUTTON' || ev.target.tagName === 'ION-ICON') return;
@@ -57,8 +60,11 @@ function startDragActions(ev) {
 }
 
 function onMove(ev) {
+
     if (!isDragging) return;
     ev.preventDefault();
+
+    createDebugLiElement(ev.type);
 
     let touch = ev.touches ? ev.touches[0] : ev;
     moveAt(touch.clientX, touch.clientY);
@@ -85,6 +91,7 @@ function moveAt(clientX, clientY) {
 }
 
 function stopDrag(ev) {
+    createDebugLiElement(ev.type);
     clearTimeout(touchTimeout); /* On iOS devices, this seems to not being handled correctly */
     stopDragActions(ev);
 }
@@ -112,8 +119,6 @@ function stopDragActions(ev) {
     placeholder = null;
     draggable = null;
 
-    alert(`placeholder removed triggered by ${ev.type}`);
-
     /* clear event listeners from the whole document */
     document.removeEventListener('mousemove', onMove);
     document.removeEventListener('mouseup', stopDrag);
@@ -124,7 +129,16 @@ function stopDragActions(ev) {
     saveNewTasksOrder();
 }
 
+/* Debugging code */
+const debugEventList = document.querySelector('.event-list');
 
+function createDebugLiElement(eventType) {
+    const newTask = document.createElement('li');
+    newTask.classList.add('task-container', 'change-theme', 'dark');
+    newTask.textContent = eventType;
+
+    debugEventList.appendChild(newTask);
+}
 /*
 * When holding, touchend triggered.
 * wihtout holding, toucend not triggered. Mousedown event is triggered before touchstart on iOS devices.
