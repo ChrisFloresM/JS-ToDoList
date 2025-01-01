@@ -86,10 +86,10 @@ function moveAt(clientX, clientY) {
 
 function stopDrag(ev) {
     clearTimeout(touchTimeout); /* On iOS devices, this seems to not being handled correctly */
-    stopDragActions();
+    stopDragActions(ev);
 }
 
-function stopDragActions() {
+function stopDragActions(ev) {
     /* If, for some reason, draggable item doesn't exist, do nothing */
     if (!draggable) return;
 
@@ -111,6 +111,8 @@ function stopDragActions() {
     placeholder.remove();
     placeholder = null;
     draggable = null;
+
+    alert(`placeholder removed triggered by ${ev.type}`);
 
     /* clear event listeners from the whole document */
     document.removeEventListener('mousemove', onMove);
