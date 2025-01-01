@@ -10,36 +10,36 @@ let draggable;
 let placeholder;
 let offsetX = 0, offsetY = 0;
 let touchTimeout;
-let touchHandled = false;
 
 function startDrag(ev) {
     isDragging = true;
     draggable = ev.currentTarget;
-    ev.preventDefault();
     // Check only for valid elements to prevent blocking other events
     if (ev.target.tagName === 'SPAN' || ev.target.tagName ===  'BUTTON' || ev.target.tagName === 'ION-ICON') return;
 
     if (ev.type === "touchstart") {
-        createDebugLiElement("on touch start");
-        touchHandled = true;
+        /* TODO: Debug code*/
+/*        createDebugLiElement("on touch start");*/
         touchTimeout = setTimeout(() => {
             startDragActions(ev);
         }, 200);
         document.addEventListener('touchend', stopDrag, {passive: false});
     } else {
-        createDebugLiElement("on mouse down");
+        /* TODO: Debug code*/
+/*        createDebugLiElement("on mouse down");*/
         startDragActions(ev);
     }
 }
 
 function startDragActions(ev) {
     if (!draggable) {
-        createDebugLiElement("draggable is null by this point on event " + ev.type);
+/*        createDebugLiElement("draggable is null by this point on event " + ev.type);*/
         return;
     }
     /* debug code */
     ev.preventDefault();
-    createDebugLiElement("start action by; " + ev.type);
+    /*TODO: Debug code*/
+/*    createDebugLiElement("start action by; " + ev.type);*/
 
     draggable.classList.add('dragging');
     draggable.style.cursor = 'grabbing';
@@ -54,7 +54,7 @@ function startDragActions(ev) {
     draggable.parentNode.insertBefore(placeholder, draggable);
 
     /* TODO: Debug code*/
-    createDebugLiElement("placeholder created");
+/*    createDebugLiElement("placeholder created");*/
 
     let currentWidth = draggable.getBoundingClientRect().width;
     draggable.style.position = 'absolute';
@@ -99,7 +99,6 @@ function moveAt(clientX, clientY) {
 function stopDrag(ev) {
     if(ev.type === "touchend") {
         clearTimeout(touchTimeout); /* On iOS devices, this seems to not being handled correctly */
-        touchHandled = false;
     }
     stopDragActions(ev);
 }
@@ -108,7 +107,8 @@ function stopDragActions(ev) {
     /* If, for some reason, draggable item doesn't exist, do nothing */
     if (!draggable) return;
 
-    createDebugLiElement(ev.type);
+    /* TODO: Debug code*/
+/*    createDebugLiElement(ev.type);*/
 
     /* Set dragging flag to false and reset pointer events */
     isDragging = false;
@@ -124,13 +124,17 @@ function stopDragActions(ev) {
     draggable.style.top = '';
     draggable.style.left = '';
 
-    /* Delete the placeholder */
-    placeholder.remove();
+    /* Delete the placeholder (multiple placeholders for iOs devices) */
+    const palceholders = document.querySelectorAll('.placeholder');
+    placeholder.forEach(placeholder => {
+        placeholder.remove();
+    })
+
     placeholder = null;
     draggable = null;
 
     /* TODO: Debug code*/
-    createDebugLiElement("placeholder removed");
+/*    createDebugLiElement("placeholder removed");*/
 
     /* clear event listeners from the whole document */
     document.removeEventListener('mousemove', onMove);
